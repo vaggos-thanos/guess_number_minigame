@@ -1,15 +1,73 @@
 let secretNumber = 0;
 let score = 10;
+let difficulty = 'easy'
 
 const againButton = document.getElementById("againBtn");
 const checkBtn = document.getElementById("checkBtn");
-//add onkey press check
 const scoreField = document.getElementById("score");
 const message = document.getElementById("message");
 const numberBox = document.getElementById("numberBox");
+const easyBtn = document.getElementById("easyBtn");
+const medBtn = document.getElementById("medBtn");
+const hardBtn = document.getElementById("hardBtn");
+const betweenBox = document.getElementById("between");
 
 scoreField.innerHTML = score;
 secretNumber = Math.trunc(Math.random() * 20) + 1;
+easyBtn.style.border = '4px solid rgb(61, 56, 134)'
+medBtn.style.border = ''
+hardBtn.style.border = ''
+
+easyBtn.addEventListener("click", async () => {
+  easyBtn.style.border = '4px solid rgb(61, 56, 134)'
+  medBtn.style.border = ''
+  hardBtn.style.border = ''
+
+  betweenBox.innerHTML = "(between 1 and 20)";
+  difficulty = 'easy'
+  score = 10;
+  scoreField.innerHTML = score;
+  secretNumber = Math.trunc(Math.random() * 20) + 1;
+  message.innerHTML = "Start guessing...";
+  checkBtn.style.display = "Block";
+  message.style.color = "RED";
+  numberBox.innerHTML = "?";
+  document.body.style.backgroundColor = "";
+});
+
+medBtn.addEventListener("click", async () => {
+  easyBtn.style.border = ''
+  medBtn.style.border = '4px solid rgb(61, 56, 134)'
+  hardBtn.style.border = ''
+
+  betweenBox.innerHTML = "(between 1 and 50)";
+  difficulty = 'medium'
+  score = 5;
+  scoreField.innerHTML = score;
+  secretNumber = Math.trunc(Math.random() * 50) + 1;
+  message.innerHTML = "Start guessing...";
+  checkBtn.style.display = "Block";
+  message.style.color = "RED";
+  numberBox.innerHTML = "?";
+  document.body.style.backgroundColor = "";
+});
+
+hardBtn.addEventListener("click", async () => {
+  easyBtn.style.border = ''
+  medBtn.style.border = ''
+  hardBtn.style.border = '4px solid rgb(61, 56, 134)'
+
+  betweenBox.innerHTML = "(between 1 and 100)";
+  difficulty = 'hard'
+  score = 5;
+  scoreField.innerHTML = score;
+  secretNumber = Math.trunc(Math.random() * 100) + 1;
+  message.innerHTML = "Start guessing...";
+  checkBtn.style.display = "Block";
+  message.style.color = "RED";
+  numberBox.innerHTML = "?";
+  document.body.style.backgroundColor = "";
+});
 
 checkBtn.addEventListener("click", async (btn) => {
   calcAnswer();
@@ -26,7 +84,6 @@ againButton.addEventListener("click", async () => {
 });
 
 document.addEventListener("keypress", async (key) => {
-  console.log(key.code);
   if (key.code == "KeyR") {
     again();
   } else if (key.code == "Enter" || key.code == "NumpadEnter") {
@@ -50,8 +107,6 @@ function again() {
 function calcAnswer() {
   const guessBox = document.getElementById("guessBox");
   const guessedNumber = guessBox.value;
-  console.log(guessedNumber);
-  console.log(secretNumber);
 
   if (score > 1) {
     if (guessedNumber < secretNumber) {
@@ -65,40 +120,14 @@ function calcAnswer() {
       checkBtn.style.display = "None";
       message.style.color = "BLACK";
       numberBox.innerHTML = secretNumber;
-      document.body.style.backgroundColor = "#70ba7f";
+      document.body.style.backgroundColor = "#9967db";
     }
   } else {
     message.innerHTML = "You lost";
     score = 0;
     checkBtn.style.display = "None";
     guessBox.value = "";
+    document.body.style.backgroundColor = "#e60b4d";
   }
   scoreField.innerHTML = score;
-  console.log("test");
 }
-/* Κάθε φορά που ξεκινάει το παιχνίδι το score θα γίνεται 10 
-   και για να πάρει νέα τιμή ο τυχαίος αριθμός
-   secretNumber = Math.trunc(Math.random() * 20) + 1;
-*/
-/* Σtον κώδικά σας θα χρειαστεί να αναφερθείτε τουλάχιστον στα 4 στοιχεία (elements) της σελίδας:
-   1) το μήνυμα message
-   2) το κουμπί checkBtn
-   3) το guessBox
-   4) το numberBox
-*/
-
-/* Γράψτε τη συνάρτηση που θα εκτελείται όταν γίνεται cklick στο κουμπί checkBtn
-   Η συνάρτηση θα πρέπει 
-     1) να sυγκρίνει τον αριθμό στο numberBox με τον secretNumber 
-        και να εμφανίζει στο message το ανάλογο μήνυμα 
-		    (Correct Number! Too high! Too low!)
-     2) Να μειώνει το score κάθε φορά που ο χρήστης δίνει λάθος αριθμό 
-        να ενημερώνει το score στην οθόνη
-     3) Όταν το score γίνει μηδέν 
-        να εμφανίζει στο message το μήνυμα You lost the game!
-        Να κρύβει το κουμπί checkBtn προσθέτοντας την κλάση hidden
-*/
-
-/* Γράψτε τη συνάρτηση που θα εκτελείται όταν γίνεται cklick στο κουμπί againBtn 
-  Ποια στοιχεία πρέπει να ενημερώσετε για να ξεκινήσει το παιχνίδι από την αρχή;
-*/
