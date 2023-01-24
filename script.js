@@ -1,6 +1,7 @@
 let secretNumber = 0;
 let score = 10;
 let difficulty = 'easy'
+let history = []; // array of objects of the form {guess: 0, score: 0}
 
 const againButton = document.getElementById("againBtn");
 const checkBtn = document.getElementById("checkBtn");
@@ -11,6 +12,7 @@ const easyBtn = document.getElementById("easyBtn");
 const medBtn = document.getElementById("medBtn");
 const hardBtn = document.getElementById("hardBtn");
 const betweenBox = document.getElementById("between");
+const guessMyNumberText = document.getElementById("guessMyNumberText");
 
 scoreField.innerHTML = score;
 secretNumber = Math.trunc(Math.random() * 20) + 1;
@@ -75,6 +77,7 @@ checkBtn.addEventListener("click", async (btn) => {
 
 checkBtn.addEventListener("keypress", async (key) => {
   if (key.code == "Enter" || key.code == "NumpadEnter") {
+
     calcAnswer();
   }
 });
@@ -116,6 +119,7 @@ function calcAnswer() {
       score -= 1;
       message.innerHTML = "Too high!";
     } else {
+      guessMyNumberText.innerHTML = "The number is:";
       message.innerHTML = "Correct Number!";
       checkBtn.style.display = "None";
       message.style.color = "BLACK";
@@ -123,6 +127,8 @@ function calcAnswer() {
       document.body.style.backgroundColor = "#9967db";
     }
   } else {
+    guessMyNumberText.innerHTML = "The number was:";
+    numberBox.innerHTML = secretNumber;
     message.innerHTML = "You lost";
     score = 0;
     checkBtn.style.display = "None";
@@ -130,4 +136,5 @@ function calcAnswer() {
     document.body.style.backgroundColor = "#e60b4d";
   }
   scoreField.innerHTML = score;
+  guessBox.value = "";
 }
