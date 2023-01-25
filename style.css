@@ -13,7 +13,6 @@ html {
 body {
   font-family: 'Press Start 2P', sans-serif;
   color: rgb(0, 0, 0);
-  background-color: rgb(12, 180, 152);
   
 }
 
@@ -21,7 +20,8 @@ body {
 header {
   position: relative;
   height: 35vh;
-  border-bottom: 7px solid rgb(0, 0, 0);
+  background-color: #000026;
+  border-bottom: 7px solid #82490b;
 }
 
 #dificulty {
@@ -67,23 +67,23 @@ header {
 
 main {
   height: 65vh;
-  color: rgb(0, 0, 0);
+  color: #82490b;
   display: flex;
   align-items: center;
+  background-color: #000000;
   justify-content: space-around;
 }
 
 #left {
-  border: rgb(0, 0, 0) solid 5px;
+  border: rgb(37, 37, 37) solid 5px;
   width: 400px;
   height: 400px;
   display: flex;
   flex-direction: column;
-  align-items: center;
 }
 
 #center {
-  margin-left: 120px;
+  margin-left: -90px;
   width: 52rem;
   display: flex;
   flex-direction: column;
@@ -91,7 +91,7 @@ main {
 }
 
 #right {
-  border: rgb(0, 0, 0) solid 5px;
+  border: rgb(37, 37, 37) solid 5px;
   width: 300px;
   height: 200px;
   font-size: 2rem;
@@ -109,7 +109,8 @@ h1 {
 }
 
 #numberBox {
-  background: rgb(0, 0, 0);
+  border: #82490b solid 5px;
+  background: #000000;
   color: rgb(255, 255, 255);
   font-size: 6rem;
   width: 15rem;
@@ -122,21 +123,25 @@ h1 {
 }
 
 #between {
-  font-size: 1.4rem;
+  font-size: 20px;
+  font-weight: bold;
   position: absolute;
   top: 2rem;
   right: 2rem;
+  color: #82490b;
 }
 
 #againBtn {
   position: absolute;
   top: 2rem;
   left: 2rem;
+  border: #82490b solid 4px;
+  border-radius: 10px;
 }
 
 #guessBox {
   background: none;
-  border: 4px solid rgb(0, 0, 0);
+  border: 5px solid #0f0f70;
   font-family: inherit;
   color: inherit;
   font-size: 5rem;
@@ -157,10 +162,6 @@ button {
   cursor: pointer;
 }
 
-.btn:hover {
-  background-color: rgb(0, 0, 0);
-}
-
 #message {
   margin-bottom: 8rem;
   height: 3rem;
@@ -173,4 +174,62 @@ button {
 
 .hidden {
 	display:none;
+}
+
+#label-highscore {
+  padding-left: 10px;
+  font-size: 40px;
+  font-weight: bold;
+}
+
+#trys {
+  margin-top: 20px;
+  font-size: 28px;
+  font-weight: bold;
+  padding-left: 70px;
+}
+
+.rainbow {
+  animation: rainbow 5s infinite;
+}
+
+@keyframes rainbow {
+  0% {
+    color: red;
+  }
+  20% {
+    color: orange;
+  }
+  40% {
+    color: yellow;
+  }
+  60% {
+    color: green;
+  }
+  80% {
+    color: blue;
+  }
+  100% {
+    color: purple;
+  }
+}
+
+.breathing {
+  animation: breathing 1s ease-in-out infinite;
+}
+
+@keyframes breathing {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
+
+#checkBtn {
+  color: rgb(8, 141, 8);
 }
